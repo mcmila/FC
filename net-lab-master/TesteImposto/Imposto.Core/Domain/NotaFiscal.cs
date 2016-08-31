@@ -55,7 +55,7 @@ namespace Imposto.Core.Domain
         /// <summary>
         /// Itens da Nota Fiscal
         /// </summary>
-        public IList<NotaFiscalItem> ItensDaNotaFiscal { get; set; }
+        public List<NotaFiscalItem> ItensDaNotaFiscal { get; set; }
 
         #endregion
 
@@ -108,8 +108,11 @@ namespace Imposto.Core.Domain
             {
                 string path = Path.Combine(ParametrosService.Consultar().PathXmlNotaFiscal, pNotaFiscal.NomeCliente + ".xml");
 
-                if (!Directory.Exists(path))
-                    Directory.CreateDirectory(path);
+                if (!Directory.Exists(ParametrosService.Consultar().PathXmlNotaFiscal))
+                    Directory.CreateDirectory(ParametrosService.Consultar().PathXmlNotaFiscal);
+
+                if (File.Exists(path))
+                    File.Delete(path);
 
                 FileStream fileStream = new FileStream(path, FileMode.CreateNew);
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(NotaFiscal));
