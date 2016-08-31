@@ -24,7 +24,7 @@ CREATE PROCEDURE dbo.P_NOTA_FISCAL
 )
 AS
 BEGIN
-	IF (@pId = 0)
+	IF (@pId iS NULL)
 	BEGIN 
 		INSERT INTO [dbo].[NotaFiscal]
            ([NumeroNotaFiscal]

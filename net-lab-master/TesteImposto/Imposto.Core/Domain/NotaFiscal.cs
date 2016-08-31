@@ -96,7 +96,7 @@ namespace Imposto.Core.Domain
             }
 
             //Gera XML da Nota Fiscal
-            //GerarXmlNotaFiscal(this);
+            GerarXmlNotaFiscal(this);
 
             //Insere Nota Fiscal no Banco de Dados
             NotaFiscalRepository.InserirNotaFiscal(this);
